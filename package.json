@@ -1,10 +1,10 @@
 {
-  "name": "vue-css-donut-chart",
-  "version": "1.0.2",
+  "name": "@0saw/vue-css-donut-chart",
+  "version": "1.0.0",
   "description": "Lightweight Vue component for drawing pure CSS donut charts",
   "keywords": ["donut", "chart", "circle", "progress", "vue", "css", "pure CSS"],
 
-  "author": "dumptyd <dumptyd2.0@gmail.com>",
+  "author": "0saw <1water4you@gmail.com>",
 
   "main": "dist/vcdonut.umd.js",
   "module": "dist/vcdonut.common.js",
@@ -32,8 +32,8 @@
     "eslint-plugin-import": "^2.14.0"
   },
 
-  "repository": "https://github.com/dumptyd/vue-css-donut-chart",
-  "bugs": "https://github.com/dumptyd/vue-css-donut-chart/issues",
+  "repository": "https://github.com/0saw/vue-css-donut-chart",
+  "bugs": "https://github.com/0saw/vue-css-donut-chart/issues",
 
   "license": "MIT",
 
