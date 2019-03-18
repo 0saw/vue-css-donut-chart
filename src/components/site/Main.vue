@@ -16,7 +16,7 @@
         :size="size" :unit="unit" :thickness="thickness"
         :hasLegend="hasLegend" :legendPlacement="legendPlacement"
         :sections="validatedSections"
-        :total="total"
+        :total="total" :columns="columns"
     >
       <div v-html="donutHTML"></div>
     </Donut>
@@ -46,7 +46,7 @@
           </div>
           <div class="control">
             <label for="thickness">Ring thickness (%)</label>
-            <input name="thickness" type="number" min="0" max="100" class="sm" v-model="thickness">
+            <input name="thickness" type="number" min="0" max="100" class="sm" v-model.number="thickness">
           </div>
         </div>
       </div>
@@ -71,6 +71,18 @@
         </div>
       </div>
       <!-- end legend config -->
+
+      <!-- multicolumn config -->
+      <div>
+        <h3>Multiple columns</h3>
+        <div class="control-group">
+			<div class="control">
+				<label for="columns">Number of columns</label>
+				<input name="columns" type="number" min="1" max="5" class="sm" v-model.number="columns">
+			</div>
+        </div>
+      </div>
+      <!-- end multicolumn config -->
 
       <!-- donut content -->
       <div>
@@ -157,6 +169,7 @@ export default {
       size: 200,
       unit: 'px',
       thickness: 20,
+      columns: 1,
 
       total,
 

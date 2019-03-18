@@ -1,5 +1,5 @@
 <template>
-	<div class="cdc-container" :style="placementStyles.container">
+	<div class="cdc-container" :class="containerClasses" :style="placementStyles.container">
 		<div class="cdc" ref="donut" :style="donutStyles">
 			<DonutSections :sections="donutSections"/>
 			<div class="cdc-overlay" :style="overlayStyles">
@@ -10,12 +10,12 @@
 		</div>
 
 		<slot name="legend">
-			<div class="cdc-legend" v-if="hasLegend" :style="placementStyles.legend">
-				<span class="cdc-legend-item" v-for="(item, idx) in legend" :key="idx" :title="item.percent">
+			<ul class="cdc-legend" v-if="hasLegend" :style="placementStyles.legend">
+				<li class="cdc-legend-item" v-for="(item, idx) in legend" :key="idx" :title="item.percent">
 					<span class="cdc-legend-item-color" :style="item.styles"></span>
 					<span>{{ item.label }}</span>
-				</span>
-			</div>
+				</li>
+			</ul>
 		</slot>
 	</div>
 </template>
@@ -30,6 +30,12 @@
 	export default {
 		name: 'vc-donut',
 		props: {
+			columns: {
+				type: Number,
+				default: 1,
+				validator: v => v > 0 && v < 6,
+			},
+
 			// diameter of the donut
 			size: {
 				type: Number,
@@ -183,6 +189,7 @@
 			},
 			placementStyles() {
 				if (!this.hasLegend) return {};
+				console.log(placementStyles);
 				return placementStyles[this.legendPlacement];
 			},
 			donutStyles() {
@@ -213,6 +220,14 @@
 			donutTextStyles() {
 				const {fontSize} = this;
 				return {fontSize};
+			},
+
+			containerClasses() {
+				return {
+					'cdc-container-multicolumn': this.columns > 1,
+					'cdc-container-horisontal': this.placementStyles.isHorisontal,
+					['cdc-container-columns-' + this.columns]: true,
+				};
 			},
 		},
 		methods: {

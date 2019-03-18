@@ -1,4 +1,5 @@
 const legendGap = '1em';
+const gridNegativeOffset = '-0.5em';
 
 export const defaultColor = 'dodgerblue';
 
@@ -11,31 +12,35 @@ export const placement = {
 
 export const placementStyles = {
 	[placement.TOP]: {
+		isHorisontal: false,
 		container: {flexDirection: 'column'},
 		legend: {
 			order: -1,
-			margin: 0,
+			margin: gridNegativeOffset,
 			marginBottom: legendGap,
 		},
 	},
 	[placement.RIGHT]: {
+		isHorisontal: true,
 		container: {},
 		legend: {
 			flexDirection: 'column',
-			margin: 0,
+			margin: gridNegativeOffset,
 			marginLeft: legendGap,
 		},
 	},
 	[placement.BOTTOM]: {
+		isHorisontal: false,
 		container: {flexDirection: 'column'},
 		legend: {},
 	},
 	[placement.LEFT]: {
+		isHorisontal: true,
 		container: {},
 		legend: {
 			flexDirection: 'column',
 			order: -1,
-			margin: 0,
+			margin: gridNegativeOffset,
 			marginRight: legendGap,
 		},
 	},
