@@ -181,7 +181,6 @@
 			},
 			placementStyles() {
 				if (!this.hasLegend) return {};
-				console.log(placementStyles);
 				return placementStyles[this.legendPlacement];
 			},
 			donutStyles() {
