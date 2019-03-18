@@ -173,7 +173,7 @@
 
 				return this.sections.map((section, idx) => ({
 					label: section.label || `Section ${idx + 1}`,
-					percent: `${section.value} (${(Math.round(section.value / valueTotal * 10000) / 100)}%)`,
+					percent: `${section.label} (${(Math.round(section.value / valueTotal * 10000) / 100)}%)`,
 					styles: {
 						backgroundColor: section.color || defaultColors[currentDefaultColorIdx++],
 					},
