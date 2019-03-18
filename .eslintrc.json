@@ -1,20 +1,28 @@
 {
-	"parser": "babel-eslint",
-	"extends": "eslint:recommended",
 	"env": {
-		"browser": true,
-		"node": true,
-		"es6": true
+		"es6": true,
+		"node": true
 	},
+	"extends": "eslint:recommended",
 	"parserOptions": {
-		"env": "browser",
-		"ecmaVersion": 6,
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"modules": true
-		}
+		"sourceType": "module"
 	},
 	"rules": {
-		"no-console": 0
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"double"
+		],
+		"semi": [
+			"error",
+			"never"
+		]
 	}
 }
