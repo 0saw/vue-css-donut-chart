@@ -1,16 +1,10 @@
 {
+	"extends": "plugin:vue/essential",
+	"parserOptions": {
+		"parser": "babel-eslint"
+	},
 	"env": {
-		"es6": true,
 		"node": true
 	},
-	"extends": "eslint:recommended",
-	"parserOptions": {
-		"sourceType": "module"
-	},
-	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		]
-	}
+	"plugins": ["import"]
 }

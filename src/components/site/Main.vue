@@ -14,8 +14,7 @@
 			<Donut :background="background" :foreground="foreground"
 				   :size="size" :unit="unit" :thickness="thickness"
 				   :hasLegend="hasLegend" :legendPlacement="legendPlacement"
-				   :sections="validatedSections"
-				   :total="total" :columns="columns">
+				   :sections="sections" :columns="columns">
 				<div v-html="donutHTML"></div>
 			</Donut>
 		</div>
@@ -108,7 +107,6 @@
 							<label :for="`section-value-${idx + 1}`">Value</label>
 							<input
 									class="sm" name="`section-value-${idx + 1}`" :min="0"
-									:max="section.value + remaining"
 									type="number" v-model.number="section.value"
 							>
 						</div>
@@ -163,7 +161,7 @@
 				color: colors[i],
 			}));
 
-			const initialConsumed = sections.reduce((a, c) => a + c.value, 0);
+			const initialConsumed = 100;
 
 			return {
 				background: '#ffffff',
@@ -172,8 +170,6 @@
 				unit: 'px',
 				thickness: 20,
 				columns: 1,
-
-				total,
 
 				hasLegend: true,
 				legendPlacement: 'bottom',
@@ -188,18 +184,6 @@
 
 				sections,
 			};
-		},
-		computed: {
-			consumed() {
-				return this.sections.reduce((a, c) => a + c.value, 0);
-			},
-			remaining() {
-				return this.total - this.consumed;
-			},
-			validatedSections() {
-				if (this.consumed > this.total) return [];
-				return this.sections;
-			},
 		},
 		methods: {
 			addSection() {

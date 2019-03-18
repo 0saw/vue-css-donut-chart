@@ -87,11 +87,6 @@
 					return true;
 				},
 			},
-			total: {
-				type: Number,
-				default: 100,
-				validator: v => v > 0,
-			},
 			hasLegend: {
 				type: Boolean,
 				default: false,
@@ -118,10 +113,6 @@
 		computed: {
 			donutSections() {
 				const valueTotal = this.sections.reduce((a, c) => a + c.value, 0);
-				if (valueTotal > this.total) {
-					const err = `Sum of all the sections' values (${valueTotal}) should not exceed \`total\` (${this.total})`;
-					throw new Error(err);
-				}
 				const degreesInACircle = 360;
 				const degreesInASection = 180;
 
@@ -130,7 +121,7 @@
 
 				const sections = [];
 				this.sections.forEach(section => {
-					const valToDeg = degreesInACircle * (section.value / this.total);
+					const valToDeg = degreesInACircle * (section.value / valueTotal);
 
 					let degreeArr = [valToDeg];
 
@@ -177,11 +168,12 @@
 			},
 			legend() {
 				if (!this.hasLegend) return null;
+				const valueTotal = this.sections.reduce((a, c) => a + c.value, 0);
 				let currentDefaultColorIdx = 0;
 
 				return this.sections.map((section, idx) => ({
 					label: section.label || `Section ${idx + 1}`,
-					percent: `${section.value} (${(section.value / this.total) * 100}%)`,
+					percent: `${section.value} (${(Math.round(section.value / valueTotal * 10000) / 100)}%)`,
 					styles: {
 						backgroundColor: section.color || defaultColors[currentDefaultColorIdx++],
 					},
